@@ -1,0 +1,385 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{subcaption}
+\usepackage[font=small]{caption}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\title{Portuguese Consumer Price Index }
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Catarina Pinto nº48397 \and
+João Santos nº48323 \and
+Leonor Santos nº51983\and
+Mariana Marques nº48340}
+%
+\authorrunning{C. Pinto, L.Santos, J.Santos, M.Marques et al.}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{ISEG; Rua do Quelhas 6, 1200-781 Lisboa \and
+\email{info@isegexecutive.education}\\
+\url{https://www.iseg.ulisboa.pt/pt/} }
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+In this project our main goal is to analyse which variables have a greater impact on inflation, for that, we analysed the inflation relative to the period between 1960 to 2022, with monthly data, as well as made a prediction model that would fit the variables. In order to do so we resorted to Jupyter Notebook and we resorted to INE for collecting data. 
+
+\keywords{Inflation \and Time Series \and Prevision Models.}
+\end{abstract}
+%
+%
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Method}
+\subsection{Model Construction}
+The definition of inflation, according to European Central Bank, “Inflation occurs when there is a broad increase in the prices of goods and services, not just of individual items; it means, you can buy less for €1 today than you could yesterday. In other words, inflation reduces the value of the currency over time.”. 
+\\
+
+\noindent In order to meet our goal we are going to use a linear regression model to compute the correlation between the variables presented in the following table: 
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{DAE8FC} 
+Variables         & Description                                                       & Unit \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Global            & Inflation Value/CPI                                            & \%   \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Goods             & Retail Products                                                   & \%   \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Services          & A system supplying a public need                                  & \%   \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Unprocessed foods & Foods that contain no artificial flavors or synthetic ingredients & \%   \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Energetic Prices  & Prices of the Energy                                              & \%   \\ \hline
+\end{tabular}
+\\
+\\
+\caption{Variables.}\label{tab1}
+\end{table}
+
+\noindent In this context our dependent variable will be the “Global” and the other variables represented are the independent ones. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Results}
+\subsection{Correlation Analysis}
+
+
+
+\begin{figure}
+\begin{subfigure}{.55\textwidth}
+  \centering
+  % include third image
+  \includegraphics[width=.85\linewidth]{GlobalGoods1.png}  
+  \caption{Correlation between Goods and Global}
+  \label{fig:sub-third}
+\end{subfigure}
+\begin{subfigure}{.55\textwidth}
+  \centering
+  % include fourth image
+  \includegraphics[width=.85\linewidth]{GlobalServices1.png}  
+  \caption{Correlation between Services and Global}
+  \label{fig:sub-fourth}
+\end{subfigure}
+\newline
+\begin{subfigure}{.55\textwidth}
+  \centering
+  % include third image
+  \includegraphics[width=.85\linewidth]{GlobalUF1.png}  
+  \caption{Correlation between Unprocessed Foods and Global}
+  \label{fig:sub-third}
+\end{subfigure}
+\begin{subfigure}{.55\textwidth}
+  \centering
+  % include fourth image
+  \includegraphics[width=.85\linewidth]{GloablEP1.png}  
+  \caption{Correlation between Energy Prices and Global}
+  \label{fig:sub-fourth}
+\end{subfigure}
+\caption{Correlation between the Independent Variables and the Dependent}
+\label{fig:fig}
+\end{figure}
+\\
+
+\noindent Now let us analyze the correlation between our independent variables and inflation, more precisely for the variable goods and the variable services, which we observe as the extremes of our model. 
+\\
+
+\noindent In the first graph, we can observe an almost perfect positive correlation between the 'Goods' and the 'Global', which means that the 'Goods' have a strong impact on inflation. To sustain this statement, we did the correlation between all independent variables with the dependent one and observed a correlation of 0,986937 (98,69\%). Moreover, we also did the VIF and obtained the following 21.177 complementing what we previously stated. 
+\\
+
+\noindent In the last graph, we notice there is a less strong positive correlation between the variables (energetic prices and inflation) when compared with the first case analyzed. In this context, the independent variable has a lesser impact on the dependent one. This result is, once again, sustained by the obtained correlation value of 0,8085 (80,85\%), as well as a VIF of 5.410. 
+\\
+
+\noindent Complementary to this analysis, we have some comments on jupyter notebook about the VIF and the corresponding classifications, as well as some observations on the correlation graphics. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Time series}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.55]{CPI_LAST.png}}
+\caption{Time series from January 1960 to October 2022 of the Inflation.}
+\label{fig}
+\end{figure}
+\\
+
+\noindent We can observe that until August 1964 there wasn’t heavy inflation, in the sense that we can see a small to medium variation, so naturally, there weren’t any extreme values during this period. 
+\\
+
+\noindent However, afterwards we observed that there is a highly volatile  inflation period, reaching one of our maximum values, 36,66\% in May of 1977. This was caused by an oil crisis that started in 1973, to aggravate the situation, in April 1974, Portugal went through a revolution, creating very unstable governmental conditions. So, from December 1972 until the mid-1980s we see an instability in the values as well as a fast-growing of them. In line 300, corresponding to November 1984, we can observe a decrease in these values, which may indicate possible stability.
+\\
+
+\noindent Although the values observed were still high (since according to BCE the limit of inflation should be 2\% or below), we could observe a “constant” decrease in the values until they stabilized in the periods afterwards. One of the causes for this may be that in 1986 Portugal joined the European Union, and in January 2002 Portugal's currency became the Euro. All of this caused inflation to decrease since there are specific requirements to join these organizations.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Comparison with each independent variable}
+
+In this section, our focus is to see if the volatility of the prices in each independent variable has the same behaviour as the volatility of the dependent variable.  
+\newpage
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.6]{CPIGoods_LAST.png}}
+\caption{Comparison with the Inflation and the Goods.}
+\label{fig}
+\end{figure}
+\\
+
+\noindent In this case, we can observe that the variable “Goods” has much similar behaviour to some of the following ones. A possible explanation is that the market price of general goods highly influences inflation. 
+
+
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.6]{CPIServices_LAST.png}}
+\caption{Comparison with the Inflation and the Services.}
+\label{fig}
+\end{figure}
+\\
+
+\noindent However, the variable “Services" doesn't seem to have as much of a similar behaviour to inflation, however, in 1993 we observe the behaviour of the services be more similar to the inflation. Although the services may affect the prices of the services, these tend to adjust their values to the demand that they have. For example, we can observe that when the inflation tends to be higher the services tend to be lower, since with the inflation people usually lose purchasing power so they don’t have the ability to buy a specific service, however, in the long run, we can observe that the behaviour of the services tends to match with inflation.
+
+
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.6]{CPI_UF_LAST.png}}
+\caption{Comparison with the Inflation and the Unprocessed foods.}
+\label{fig}
+\end{figure}
+\newpage
+\\
+
+\noindent In the case of the variable “Unprocessed foods”, don’t follow a very rigorous behaviour when compared to the inflation. Since unprocessed foods are more influenced by external conditions, for example, metrological conditions, it’s natural that their behaviour isn’t equivalent. To better understand, the Harvard School of Public Health, defined “Unprocessed foods include the natural edible food parts of plants and animals”, so the only way that inflation could affect is the 
+feedstock that normally farmers need for their plantations or to create animals. Nevertheless, unprocessed foods still have a strong correlation with inflation, which means that their behaviour will be very close, although not perfect, to inflation.
+
+
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.6]{CPI_EP_LAST.png}}
+\caption{Comparison with the Inflation and the Energetic Prices.}
+\label{fig}
+\end{figure}
+\\
+
+\noindent The “Energetic Prices” have less similar behaviour with the inflation, since this variable is very influenced by macroeconomic factors, for example, if we focus on the period between 2021 and today, we see an increase of the values which may be correlated with the war that we are experiencing in 2022 in Europe and  consequences of the pandemic crisis. Another factor that may explain this kind of independency is that the energetic prices could have some effects on inflation since if these increase then the prices of the other’s products tend to have the same behaviour because most of them use energetic products as intermediate products.  
+\\
+
+\noindent So, after this analysis we can observe that inflation has a very strong correlation with all the independent variables, as we have seen before since the independent variables can influence them directly and indirectly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Predictions Models}
+As stated before, we intend to make an accurate prediction model. As such we have computed some prediction models that we analyzed. 
+\\
+
+\noindent In these models we used the independent variable of “Energetic Prices” to predict our dependent one (“Global”). In our model, we’re allowed to do this because the independent variable that we’ve chosen has a strong correlation with our dependent one  
+
+\subsubsection{OLS Model}
+\\
+
+For the first prediction, we use a linear regression model. It is critical to evaluate whether this is a good prediction model for our data. For that, we do a goodness-of-fit measure, like computing R-squared. In this case, we can observe that, by analyzing the R-squared score, this is in fact, a good prediction model, although not the best one seen as our values for R-squared is a little lower than we would prefer (R2 score (train) = 0.65 and R2 score (test) = 0.68) meaning a less precise prediction). 
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.55]{OLS.png}}
+\caption{OLS Graphic Representation for the Energetic Prices and Global. Pink dots-train. Blue dots-test}
+\label{fig}
+\end{figure}
+
+
+\subsubsection{MLP Model}
+\\
+
+For the second prediction, we used  a multilayer perceptron model. Computing once again the value of R-squared, we see that very similar to the previous model, the MLP model is a good prediction model, but not the best one. (R2 score (train) = 0.65 and R2 score (test) = 0.68) meaning a less precise prediction).
+
+\subsubsection{Random Forest Model}
+\\
+
+For our final prediction, we used the Random Forest model. In this model, we obtained a better model in terms of goodness-of-fit measure for the R2 score (train) (0.92), however for the R2 score (test) we obtain a less accurate prediction (0.58), more similar to the previous models. 
+\\
+
+\noindent In sum, for the R2 score (train) we see that the best prediction model would be the Random Forest model, however for our goal, that is the prediction, we should focus on the other's two models since they have a better R2 score (test).   
+\section{Conclusion}
+
+As we expected all the independent variables have a high correlation with the dependable one since they have mutual effects on each other.
+In terms of prediction, we could observe that the OLS model and the MPL model are better since they represent higher R2, however for the R2 score (train) the Random Forest model is the better one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+% \bibliographystyle{splncs04}
+% \bibliography{mybibliography}
+%
+\begin{thebibliography}{9}
+\bibitem{ref_article1}
+Vieira, F. E. P.: O impacto do preço do petróleo na economia e na bolsa de valores portuguesa. , 11--24 (2020)
+
+\bibitem{ref_url1}
+Harvard T.H. Chan. School of public Health,\url{https://www.hsph.harvard.edu/nutritionsource/processed-foods/}. Last accessed 22 Nov 2022
+
+\bibitem{ref_url1}
+2021portugal.eu,\url{https://www.2021portugal.eu/pt/noticias/o-percurso-de-portugal-na-uniao-europeia/}. Last accessed 22
+Nov 2022
+
+\bibitem{ref_url2}
+INE Homepage,\url{https://www.ine.pt/xportal/xmain?xpgid=ine\_main&amp;xpid=INE}. Last accessed 12
+Nov 2022
+
+\end{thebibliography}
+
+
+
+
+
+
+
+\end{document}
